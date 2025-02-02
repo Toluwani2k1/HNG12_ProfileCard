@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile Card - Toluwani Ogundare</title>
+	
+	<!-- Internal CSS -->
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            padding: 35px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .profile-card:hover {
+            transform: scale(1.05);
+        }
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 2px solid #007BFF;
+        }
+        h2 {
+            margin: 10px 0 5px;
+            font-size: 1.8em;
+            color: #333;
+        }
+        h4 {
+            margin: 5px 0 15px;
+            font-size: 1.5em;
+            color: #555;
+        }
+        p {
+            margin: 10px 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            display: none;
+            margin: 10px 0;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #007BFF;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 400px) {
+            .profile-card {
+                padding: 10px;
+            }
+            .profile-picture {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="profile-card">
+    <img src="img/toluwani.jpeg" alt="Profile Picture" data-testid="profilePicture" class="profile-picture">
+    <h2 data-testid="fullName">Toluwani Ogundare</h2>
+    <h4 data-testid="jobTitle">Front-End Developer</h4>
+    
+    <p data-testid="shortBio">
+        Being a budding Front-End developer, i've been able to learn and practice fundamental concepts of front-end technologies through free online resources. I joined the HNG internship to refine my skill-set, gain professional experience through building of real-world projects, collaborate with like-minded individuals, and learn from proficient mentors. Asides the need to refine my front-end skills, I also joined the PM track. Why? because it will orient me to be able to think for customers and also set me up for technology leadership.
+    </p>
+    
+    <p data-testid="currentLocation">Lagos, Nigeria</p>
+    <p data-testid="emailAddress">omokoredeogundare@gmail.com</p>
+    
+    <div class="social-links" data-testid="socialLinks">
+        <a href="https://www.linkedin.com/in/toluwani-ogundare-68a4021a9/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Toluwani2k1" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Twitter</a>
+    </div>
+    
+    <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+    </div>
+    <p data-testid="currentTimeUTC" id="currentTimeUTC"></p>
+
+</div>
+
+<script>
+    function updateTime() {
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        loadingIndicator.style.display = 'block';
+
+        setTimeout(() => {
+            const now = new Date();
+            const utcTime = now.toUTCString();
+            document.getElementById('currentTimeUTC').textContent = `Current Time (UTC): ${utcTime}`;
+            loadingIndicator.style.display = 'none';
+        }, 1000);
+    }
+
+    // call to display the current time
+    updateTime();
+</script>
+
+</body>
+</html>
